@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topatsu Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="main-header">
+
+    <h1>TOPATSU DIGITAL MONITORING</h1>
+
+    <p>Engineering Department</p>
+
+</div>
+
+        <div class="datetime-box">
+
+    <h2 id="dateNow"></h2>
+
+    <h1 id="clockNow"></h1>
+
+</div>
+
+        <div class="card">
+
+    <h2>Data Topatsu</h2>
+
+    <div class="form-group">
+
+        <label>Nama Line</label>
+
+        <select id="line">
+            <option>Assy 1</option>
+            <option>Assy 2</option>
+            <option>Leak Test</option>
+            <option>Final Check</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Nama Mesin</label>
+
+        <select id="machine">
+            <option>Leak Tester</option>
+            <option>Conveyor</option>
+            <option>Press Machine</option>
+            <option>Vision Camera</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Nama Engineer</label>
+
+        <input type="text" id="engineer">
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Problem Mesin</label>
+
+        <textarea id="problem"></textarea>
+
+    </div>
+
+</div>
+
+        <div class="card">
+
+            <h2>Status</h2>
+            <p id="status">Standby</p>
+
+            <h2>Timer</h2>
+            <h1 id="timer">00:00:00</h1>
+
+            <div class="kpi-container">
+
+    <div class="kpi-card">
+
+        <h3>TRAVEL TIME</h3>
+
+        <h2 id="travelTime">00:00:00</h2>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <h3>REPAIR TIME</h3>
+
+        <h2 id="repairTime">00:00:00</h2>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <h3>TEST RUN</h3>
+
+        <h2 id="testTime">00:00:00</h2>
+
+    </div>
+
+    <div class="kpi-card total-card">
+
+    <h3>TOTAL TOPATSU</h3>
+
+    <h2 id="totalTime">00:00:00</h2>
+
+</div>
+
+</div>
+
+            <div class="button-group">
+
+    <button id="startBtn">START ALARM</button>
+
+    <button id="locationBtn">SAMPAI LOKASI</button>
+
+    <button id="repairBtn">SELESAI PERBAIKAN</button>
+
+    <button id="finishBtn">FINISH TEST RUN</button>
+
+    <button id="resetBtn">RESET</button>
+
+</div>
+
+        </div>
+
+    </div>
+
+    <div class="summary-container">
+
+    <div class="summary-card">
+
+        <h3>TOTAL TOPATSU</h3>
+
+        <h1 id="summaryTopatsu">0</h1>
+
+    </div>
+
+    <div class="summary-card">
+
+        <h3>TOTAL DOWNTIME</h3>
+
+        <h1 id="summaryDowntime">00:00:00</h1>
+
+    </div>
+
+    <div class="summary-card">
+
+        <h3>AVERAGE REPAIR</h3>
+
+        <h1 id="summaryRepair">00:00:00</h1>
+
+    </div>
+
+</div>
+
+    <div class="card">
+
+    <h2>History Topatsu</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Line</th>
+                <th>Mesin</th>
+                <th>Engineer</th>
+                <th>Problem</th>
+                <th>Travel</th>
+                <th>Repair</th>
+                <th>Test Run</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="historyBody">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div id="popupSuccess" class="popup-success">
+
+    TOPATSU SUCCESSFULLY RECORDED
+
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
