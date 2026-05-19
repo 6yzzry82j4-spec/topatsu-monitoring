@@ -338,3 +338,12 @@ tr:hover{
 .delete-btn:hover{
     background-color: #dc2626;
 }
+
+#retryBtn{
+    background-color: #ef4444;
+}
+
+#retryBtn:enabled{
+    background-color: #ef4444 !important;
+    opacity: 1 !important;
+}

@@ -22,6 +22,7 @@ const totalTime = document.getElementById("totalTime");
 const startBtn = document.getElementById("startBtn");
 const locationBtn = document.getElementById("locationBtn");
 const repairBtn = document.getElementById("repairBtn");
+const retryBtn =document.getElementById("retryBtn");
 const finishBtn = document.getElementById("finishBtn");
 const resetBtn = document.getElementById("resetBtn");
 const line = document.getElementById("line");
@@ -66,13 +67,15 @@ function updateTimer(){
     timer.innerText = formatTime(seconds);
 }
 
-function updateButtons(start, location, repair, finish, reset){
+function updateButtons(start, location, repair, retry, finish, reset){
 
     startBtn.disabled = start;
 
     locationBtn.disabled = location;
 
     repairBtn.disabled = repair;
+
+    retryBtn.disabled = retry;
 
     finishBtn.disabled = finish;
 
@@ -107,7 +110,7 @@ startBtn.addEventListener("click", function(){
 
     startTimer();
 
-    updateButtons(true, false, true, true, false);
+    updateButtons(true, false, true, true, true, false);
 
 });
 
@@ -127,7 +130,7 @@ locationBtn.addEventListener("click", function(){
 
     setStatus("Perbaikan Mesin", "#ff9800");
 
-    updateButtons(true, true, false, true, false);
+    updateButtons(true, true, false, true, true, false);
 
 });
 
@@ -137,7 +140,7 @@ repairBtn.addEventListener("click", function(){
         return;
     }
 
-    repairSeconds = seconds;
+    repairSeconds += seconds;
 
     repairTime.innerText = formatTime(repairSeconds);
 
@@ -147,7 +150,50 @@ repairBtn.addEventListener("click", function(){
 
     setStatus("Test Run Mesin", "#28a745");
 
-    updateButtons(true, true, true, false, false);
+    updateButtons(
+    true,
+    true,
+    true,
+    false,
+    false,
+    false
+);
+
+retryBtn.disabled = false;
+
+retryBtn.style.opacity = "1";
+
+retryBtn.style.cursor = "pointer";
+
+finishBtn.disabled = false;
+
+});
+
+retryBtn.addEventListener("click", function(){
+
+    if(currentMode !== "test"){
+        return;
+    }
+
+    testSeconds += seconds;
+
+    testTime.innerText =
+        formatTime(testSeconds);
+
+    seconds = 0;
+
+    currentMode = "repair";
+
+    setStatus("Perbaikan Mesin", "#f59e0b");
+
+    updateButtons(
+    true,
+    true,
+    false,
+    true,
+    true,
+    false
+);
 
 });
 
@@ -157,7 +203,7 @@ finishBtn.addEventListener("click", function(){
         return;
     }
 
-    testSeconds = seconds;
+    testSeconds += seconds;
 
     testTime.innerText = formatTime(testSeconds);
 
@@ -216,7 +262,7 @@ showPopup();
 
     setStatus("Topatsu Selesai", "#dc3545");
 
-    updateButtons(true, true, true, true, false);
+    updateButtons(true, true, true, true, true, false);
 
     currentMode = "done";
 
@@ -242,7 +288,7 @@ resetBtn.addEventListener("click", function(){
 
     setStatus("Standby", "#6c757d");
 
-    updateButtons(false, true, true, true, false);
+    updateButtons(false, true, true, true, true, false);
 
     totalTime.innerText = "00:00:00";
 
